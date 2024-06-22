@@ -1,0 +1,49 @@
+class Vehicle:
+    def __init__(self, model, avg_speed, passengers):
+        self.model = model
+        self.avg_speed = avg_speed
+        self.passengers = passengers
+    
+    def fuel_consumption(self, distance):
+        return 0
+    
+    def travel_time(self, distance):
+        return distance / self.avg_speed
+
+class Bicycle(Vehicle):
+    def fuel_consumption(self, distance):
+        return 0
+    
+class Car(Vehicle):
+    def fuel_consumption(self, distance):
+        return distance * 0.05
+    
+class Truck(Vehicle):
+    def fuel_consumption(self, distance):
+        return distance * 0.1
+
+def main():
+    choice = input("Choose a vehicle (bicycle, car, truck): ")
+    if choice == "bicycle":
+        vehicle = Bicycle("Mountain Bike", 20, 1)
+    elif choice == "car":
+        vehicle = Car("Toyota Corolla", 60, 4)
+    elif choice == "truck":
+        vehicle = Truck("Mercedes Actros", 50, 2)
+    else:
+        print("Invalid choice")
+        return
+    
+    distance = float(input("Enter the distance to travel: "))
+    
+    print("Model:", vehicle.model)
+    print("Passengers:", vehicle.passengers)
+    
+    consumption = vehicle.fuel_consumption(distance)
+    print("Fuel consumption:", consumption)
+    
+    time = vehicle.travel_time(distance)
+    print("Travel time:", time)
+
+if __name__ == "__main__":
+    main()
